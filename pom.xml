@@ -1,0 +1,112 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>maven.first.project</groupId>
+  <artifactId>first.project</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>first.project</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <profiles>
+	  <profile>
+		  <id>test</id>
+	<build>
+			  <plugins>
+				  <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-antrun-plugin</artifactId>
+                  <version>1.1</version>
+                  <executions>
+                     <execution>
+                        <phase>test</phase>
+                        <goals>
+                           <goal>run</goal>
+                        </goals>
+                        <configuration>
+                           <tasks>
+                              <echo>Using env.dev.properties</echo>
+                           </tasks>
+                        </configuration>
+                     </execution>
+                  </executions>
+	  
+  </plugin>
+  </plugins>
+  </build>
+  </profile>
+    <profile>
+		  <id>dev</id>
+		  <activation>
+      <property>
+         <name>env</name>
+         <value>dev</value>
+      </property>
+   </activation>
+		  <build>
+			  <plugins>
+				  <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-antrun-plugin</artifactId>
+                  <version>1.1</version>
+                  <executions>
+                     <execution>
+                        <phase>test</phase>
+                        <goals>
+                           <goal>run</goal>
+                        </goals>
+                        <configuration>
+                           <tasks>
+                              <echo>Using env.dev.properties</echo>
+                           </tasks>
+                        </configuration>
+                     </execution>
+                  </executions>
+	  
+  </plugin>
+  
+  </plugins>
+  </build>
+  </profile>
+  </profiles>
+<build>
+<plugins>
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.7.0</version>
+    <configuration>
+        <source>9</source>
+        <target>9</target>
+        <showWarnings>true</showWarnings>
+        <showDeprecation>true</showDeprecation>
+    </configuration>
+</plugin>
+</plugins>
+</build>
+
+<reporting>
+<plugins>
+<plugin>
+<groupId>org.apache.maven.plugins </groupId> 
+  <artifactId>maven-doap-plugin </artifactId> 
+  <version>1.2</version>
+</plugin>
+</plugins>
+</reporting>
+
+</project>
