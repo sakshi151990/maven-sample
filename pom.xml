@@ -22,6 +22,13 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <!--contains the URL of the Source Control Management system pointing to the folder containing this pom.xml-->
+   <scm>
+	<connection>scm:git:git@github.com:sakshi151990/maven-sample.git</connection>
+	<url>scm:git:git@github.com:sakshi151990/maven-sample.git</url>
+	<developerConnection>scm:git:git@github.com:sakshi151990/maven-sample.git</developerConnection>
+  </scm>
+  
   <profiles>
 	  <profile>
 		  <id>test</id>
@@ -46,6 +53,12 @@
                   </executions>
 	  
   </plugin>
+  
+  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-release-plugin</artifactId>
+    <version>2.5.3</version>
+      </plugin>
   </plugins>
   </build>
   </profile>
