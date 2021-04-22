@@ -3,7 +3,8 @@ pipeline {
      docker {
         image: 'maven:3.8.1-adoptopenjdk-11'
         args: '-v /root/.m2:/root/.m2'
-    }  
+    }
+    }
     stages { 
         stage('SCM Checkout') { 
              git url: 'https://github.com/sakshi151990/maven-sample.git'
@@ -18,6 +19,6 @@ pipeline {
                sh 'mvn -B -DskipTests test'
            }   
         }
-    }
+    
   }
 }
