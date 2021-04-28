@@ -1,1 +1,36 @@
+pipeline {
+    agent  any
+    stages {
+
+        stage('SCM checkout')
+        {
+            steps{
+            
+                 git url: 'https://github.com/sakshi151990/maven-sample.git', branch: 'Development'
+            }
+
+        }
+          stage('Deploy application on gcp instance')
+        {
+            steps{
+            
+                ansiblePlaybook become: true, installation: 'ansible', playbook: '/Ansible_deploy/gcp__deploy_playbook.yml'
+
+
+            }
+ 
+        }
+        stage('Clean Up gcp instance')
+        {
+            steps{
+            
+                ansiblePlaybook become: true, installation: 'ansible', playbook: '/Ansible_deploy/cleanup_gcp.yml'
+
+
+            }
+ 
+        }
+        
+    }
+}
 
