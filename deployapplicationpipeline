@@ -24,7 +24,7 @@ pipeline {
         {
             steps{
             
-                ansiblePlaybook become: true, installation: 'ansible', playbook: '/Ansible_deploy/cleanup_gcp.yml'
+                ansiblePlaybook become: true, installation: 'ansible', playbook: '$WORKSPACE/Ansible_deploy/cleanup_gcp.yml'
 
 
             }
