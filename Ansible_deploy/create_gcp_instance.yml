@@ -1,6 +1,8 @@
 ---
 - name: create GCP instance
   hosts: localhost
+  vars_files:
+    - ./app_vars.yml
   
   tasks:   
     - name: create a disk
