@@ -31,7 +31,7 @@ pipeline {
         }
         stage ('Invoke_pipeline') {
             steps {
-                build job: 'codepipeline'
+                build job: 'DockerImage'
             }
         }   
     }
