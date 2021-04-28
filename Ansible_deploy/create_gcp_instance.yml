@@ -96,4 +96,8 @@
 
     - name: Start Application
       become: yes
-      command: "docker run --rm --name javaapplication sakshikansal/maven-sample-application:latest"
+      command: "{{ item }}"
+      with_items:
+      - docker run --name javaapplication sakshikansal/maven-sample-application:latest
+      - docker logs javaapplication
+      - docker rm javaapplication
