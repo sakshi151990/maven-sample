@@ -42,8 +42,14 @@ pipeline {
                }
 
             }
- 
+             
         }
+        
+        stage ('Deploy DockerImage to gcp pipeline') {
+            steps {
+                build job: 'Ansibledeploy_pipeline'
+            }
+        }   
 
         
     }
