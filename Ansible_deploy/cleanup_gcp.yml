@@ -1,6 +1,8 @@
 ---
 - name: Clean Up Gcp Instances
   hosts: localhost
+  vars_files:
+    - ./app_vars.yml
   
   tasks:   
     - name: Delete the instance
