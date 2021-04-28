@@ -1,11 +1,9 @@
 ---
 - name: Clean Up Gcp Instances
   hosts: localhost
-  vars_files:
-    - ./app_vars.yml
   
-  tasks: 
-     - name: Delete the instance
+  tasks:   
+    - name: Delete the instance
       gcp_compute_instance:
         name: "{{ gcp_compute_instance }}"     
         zone: us-central1-a
@@ -13,6 +11,7 @@
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_cred_file }}"
         state: absent
+
     - name: Delete  disk
       gcp_compute_disk:
         name: "{{ gcp_disk_instance }}"
@@ -31,5 +30,3 @@
         auth_kind: "{{ gcp_cred_kind }}"
         service_account_file: "{{ gcp_cred_file }}"
         state: absent
-     
-   
