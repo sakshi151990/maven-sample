@@ -1,0 +1,50 @@
+pipeline {
+    agent  any
+    stages {
+
+        stage('SCM checkout')
+        {
+            steps{
+            
+                 git url: 'https://github.com/sakshi151990/maven-sample.git', branch: 'Development'
+            }
+
+        }
+          stage('Build Image')
+        {
+            steps{
+            
+                sh 'docker build -t maven-sample:$BUILD_NUMBER $WORKSPACE'
+
+
+            }
+ 
+        }
+        stage('Test Image')
+        {
+            steps{
+            
+                sh 'docker run --rm maven-sample:$BUILD_NUMBER'
+
+
+            }
+ 
+        }
+
+        stage('Push to DockerHub')
+        {
+            steps {
+              withDockerRegistry(credentialsId: '8f3c73a1-15d2-4371-89a5-46555bb85d09', url: 'https://index.docker.io/v1/') {
+          sh '''
+          docker tag maven-sample:$BUILD_NUMBER sakshikansal/maven-sample-application:latest
+          docker push sakshikansal/maven-sample-application:latest'''
+          
+               }
+
+            }
+ 
+        }
+
+        
+    }
+}
