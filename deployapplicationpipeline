@@ -14,7 +14,7 @@ pipeline {
         {
             steps{
             
-                ansiblePlaybook become: true, installation: 'ansible', playbook: '/Ansible_deploy/gcp__deploy_playbook.yml'
+                ansiblePlaybook become: true, installation: 'ansible', playbook: '$WORKSPACE/Ansible_deploy/gcp__deploy_playbook.yml'
 
 
             }
