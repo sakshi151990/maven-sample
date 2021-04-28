@@ -29,7 +29,7 @@ pipeline {
                sh 'mvn package'
            }   
         }
-        stage ('Invoke_pipeline') {
+        stage ('Create DockerImage pipeline') {
             steps {
                 build job: 'DockerImage'
             }
