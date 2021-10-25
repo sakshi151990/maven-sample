@@ -1,6 +1,0 @@
----
-- hosts: all
-  vars_files:
-    - ./app_vars.yml
-
-- include: create_gcp_instance.yml

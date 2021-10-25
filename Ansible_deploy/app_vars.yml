@@ -1,6 +1,0 @@
-gcp_project: double-song-298902
-gcp_cred_kind: serviceaccount
-gcp_cred_file: '/tmp/ansiblekey/cred.json'
-gcp_disk_instance: disk-instance
-gcp_address_instance: address-instance
-gcp_compute_instance: java-deployment
